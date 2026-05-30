@@ -1,0 +1,20 @@
+# ── Required ───────────────────────────────────────────────────────────────
+region              = "us-ashburn-1"
+user_ocid           = "ocid1.user.oc1..aaaaaa..."
+tenancy_ocid        = "ocid1.tenancy.oc1..aaaaaa..."
+compartment_ocid    = "ocid1.compartment.oc1..aaaaaa..."
+fingerprint         = "12:34:56:78:90:ab:cd:ef:12:34:56:78:90:ab:cd:ef"
+private_key_path     = "/home/ubuntu/.oci/oci_api_key.pem"
+ssh_public_key_path  = "/home/ubuntu/.ssh/id_rsa.pub"
+ssh_private_key_path = "/home/ubuntu/.ssh/id_rsa"
+
+# ── Optional (defaults shown) ──────────────────────────────────────────────
+# instance_name              = "free-tier-arm"
+# instance_ocpus             = 4
+# instance_memory_gb         = 24
+# boot_volume_size_gb        = 50
+# availability_domain_index  = 0
+# allowed_ssh_cidrs          = ["0.0.0.0/0"]
+# free_tier_safeguard        = true
+# allow_amd_micro               = false
+# amd_availability_domain_index = 2  # AMD E2.1.Micro only exists in Availability Domain 3 (index 2)

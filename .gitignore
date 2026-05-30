@@ -1,0 +1,19 @@
+# Sensitive credentials — never commit
+terraform.tfvars
+*.tfvars
+
+# Terraform internals
+.terraform/
+*.terraform.*
+terraform.tfstate
+terraform.tfstate.*
+crash.log
+override.tf
+override.tf.json
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Run logs
+*.log
