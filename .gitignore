@@ -17,3 +17,6 @@ Thumbs.db
 
 # Run logs
 *.log
+
+# Telegram bot config (local secrets)
+.telegramrc
