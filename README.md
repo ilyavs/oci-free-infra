@@ -52,6 +52,21 @@ The repo includes two retry scripts:
 
 Both try `terraform apply` every 15 minutes, creating the Ampere A1 when capacity opens. They exit cleanly once an instance is provisioned.
 
+### Telegram alert (optional)
+
+Get a notification the moment the instance provisions:
+
+1. Create a bot via [@BotFather](https://t.me/BotFather) on Telegram, save the token
+2. Start a chat with your bot, then visit `https://api.telegram.org/bot<TOKEN>/getUpdates` to get your chat ID
+3. Create `~/.telegramrc` on the machine running the retry script:
+
+```
+TELEGRAM_BOT_TOKEN="your:token"
+TELEGRAM_CHAT_ID="your_chat_id"
+```
+
+If this file is missing or incomplete, the script runs normally without notifications.
+
 ## Security
 
 - `terraform.tfvars`, `*.tfstate`, and `*.log` are gitignored — **never commit secrets**

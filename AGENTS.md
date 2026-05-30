@@ -23,6 +23,14 @@ State must be present before running `apply`. It is managed on the AMD instance 
 - Tail logs: `sudo journalctl -u tf-retry -f`
 - The script exits cleanly when the Ampere instance is created (detected via `data.oci_core_instance` data source).
 
+### Telegram alert (optional)
+To get notified when the instance provisions, create `~/.telegramrc`:
+```
+TELEGRAM_BOT_TOKEN="your:token"
+TELEGRAM_CHAT_ID="your_chat_id"
+```
+If absent, the script runs silently. See README.md for full setup.
+
 ## SSH
 | Instance | Command |
 |----------|---------|
