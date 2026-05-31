@@ -28,7 +28,7 @@ while true; do
   cd "$DIR"
   terraform apply -auto-approve \
     -var="allow_amd_micro=true" \
-    -var="amd_availability_domain_index=2" 2>&1 | tee /tmp/tf-apply.log
+    -var="amd_availability_domain_index=2" 2>&1 | tee /tmp/tf-apply.log || true
 
   if terraform state list 2>/dev/null | grep -q 'oci_core_instance\.this\['; then
     IP=$(terraform output -json instance_public_ip 2>/dev/null | jq -r '.[0] // empty')
