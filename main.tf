@@ -143,16 +143,35 @@ resource "oci_core_instance" "this" {
 # ── AMD Micro instance (always-free, different AD pool) ────────────────────
 
 resource "oci_core_instance" "amd" {
-  count               = var.allow_amd_micro ? 1 : 0
+  count               = var.allow_amd_micro ? 2 : 0
   compartment_id      = var.compartment_ocid
   availability_domain = data.oci_identity_availability_domains.this.availability_domains[var.amd_availability_domain_index].name
-  display_name        = "${var.instance_name}-amd"
+  display_name        = "${var.instance_name}-amd-${count.index}"
+
   shape               = "VM.Standard.E2.1.Micro"
 
   source_details {
     source_type = "image"
     source_id   = data.oci_core_images.amd.images[0].id
   }
+
+  create_vnic_details {
+    assign_public_ip = true
+    subnet_id        = local.subnet_id
+    display_name     = "${var.instance_name}-amd-vnic-${count.index}"
+  }
+
+  metadata = {
+    ssh_authorized_keys = file(var.ssh_public_key_path)
+  }
+
+  lifecycle {
+    ignore_changes = [
+      source_details[0].source_id,
+      metadata,
+    ]
+  }
+}
 
   create_vnic_details {
     assign_public_ip = true
