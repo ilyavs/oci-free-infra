@@ -172,21 +172,3 @@ resource "oci_core_instance" "amd" {
     ]
   }
 }
-
-  create_vnic_details {
-    assign_public_ip = true
-    subnet_id        = local.subnet_id
-    display_name     = "${var.instance_name}-amd-vnic"
-  }
-
-  metadata = {
-    ssh_authorized_keys = file(var.ssh_public_key_path)
-  }
-
-  lifecycle {
-    ignore_changes = [
-      source_details[0].source_id,
-      metadata,
-    ]
-  }
-}
